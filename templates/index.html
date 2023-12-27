@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <title>Guardian Box</title>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <section id="header">
+      <div class="header container">
+        <div class="nav-bar">
+          <div class="brand">
+            <a href="/" class="home-link">
+              <h1><span>Guardian</span> Box</h1>
+            </a>
+          </div>
+          <div class="nav-list">
+            <div class="hamburger">
+              <div class="bar"></div>
+            </div>
+            <ul>
+              <li><a href="#hero" data-after="hero">Beranda</a></li>
+              <li>
+                <a href="#services" data-after="services">Layanan</a>
+              </li>
+              <li>
+                <a href="#projects" data-after="Projects">Informasi</a>
+              </li>
+              <li><a href="#about" data-after="About">Tentang</a></li>
+              <li><a href="#contact" data-after="Contact">Kontak</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Header -->
+
+    <!-- Hero Section  -->
+    <section id="hero">
+      <div class="hero container">
+        <div>
+          <h1>Selamat Datang <span></span></h1>
+          <h1>di Aplikasi Scam Detector <span></span></h1>
+          <h1>Guardian Box<span></span></h1>
+          <a href="#services" type="button" class="cta">Coba Sekarang</a>
+        </div>
+      </div>
+    </section>
+    <!-- End Hero Section  -->
+
+    <!-- Services Section -->
+    <section id="services">
+      <div class="services container">
+        <div class="service-top">
+          <h1 class="section-title">SCAM DETECTOR</h1>
+        </div>
+        <div class="service-middle">
+          <div class="service-item">
+            <form id="scam-detection-form" action="/detect_scam" method="post">
+              <h2>Deteksi Scam menggunakan Machine Learning</h2>
+              <label for="message">Pesan:</label>
+              <div class="input-box">
+                <input type="text" id="message" name="message" required />
+              </div>
+              <button type="submit">Deteksi Sekarang</button>
+            </form>
+            {% if prediction_label is not none %}
+            <div id="result-container">
+              <h2>Hasil Deteksi:</h2>
+              <h3>
+                Pesan ini merupakan pesan {% if prediction_label == 0 %}normal{%
+                else %}scam{% endif %}
+              </h3>
+              <h3>
+                Probabilitas {% if prediction_label == 0 %}normal{% else
+                %}scam{% endif %} adalah: {{ probability }}%
+              </h3>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="service-bottom"></div>
+      </div>
+    </section>
+    <!-- End Service Section -->
+
+    <!-- Informasi Section -->
+    <section id="projects">
+      <div class="projects container">
+        <div class="projects-header">
+          <h1 class="section-title">Informasi mengenai<span> SCAM</span></h1>
+        </div>
+        <div class="row">
+          <div class="scam-image">
+            <img
+              src="{{ url_for('static', filename='img/scam.jpg') }}"
+              alt="Scam Image"
+            />
+          </div>
+          <div class="content">
+            <h3>How dangerous is a scam?</h3>
+            <p>
+              Berdasarkan Riset Nasional “Penipuan Digital di Indonesia: Modus,
+              Medium, dan Rekomendasi 91,2% Penipuan terbanyak merupakan
+              penipuan berkedok hadiah
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Informasi Section -->
+
+    <!-- About Section -->
+    <section id="about">
+      <div class="about container">
+        <div class="col-left">
+          <div class="about-img">
+            <img
+              src="{{ url_for('static', filename='img/detect.jpg') }}"
+              alt="Image 2"
+            />
+          </div>
+        </div>
+        <div class="col-right">
+          <h1 class="section-title">Tentang <span>Guardian BOX</span></h1>
+          <h2>Aplikasi Web Scam Detection berbasis Machine Learning</h2>
+          <p>
+            Aplikasi web Scam Detection berbasis Machine Learning merupakan
+            solusi inovatif untuk melawan penipuan dan kejahatan siber.
+            Dikembangkan dengan menggunakan teknologi machine learning, aplikasi
+            ini memiliki kemampuan untuk mendeteksi dan mengidentifikasi potensi
+            penipuan secara otomatis melalui analisis teks pesan yang diterima.
+          </p>
+          <p>
+            Fitur utama dari aplikasi ini adalah kemampuannya untuk memproses
+            pesan atau teks yang diinput oleh pengguna dan mengklasifikasikannya
+            apakah pesan tersebut mengandung unsur penipuan atau tidak. Proses
+            ini memanfaatkan model machine learning yang telah dilatih
+            menggunakan sejumlah besar data pelatihan yang mencakup pola dan
+            karakteristik umum dari pesan-pesan penipuan.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- End About Section -->
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="contact container">
+        <div>
+          <h1 class="section-title">Informasi <span>Kontak</span></h1>
+        </div>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="icon">
+              <img src="https://img.icons8.com/bubbles/100/000000/phone.png" />
+            </div>
+            <div class="contact-info">
+              <h1>No. HP</h1>
+              <h2></h2>
+              <h2></h2>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="icon">
+              <img
+                src="https://img.icons8.com/bubbles/100/000000/new-post.png"
+              />
+            </div>
+            <div class="contact-info">
+              <h1>Email</h1>
+              <h2>@ftmm.unair.ac.id</h2>
+              <h2>@gmail.com</h2>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="icon">
+              <img
+                src="https://img.icons8.com/bubbles/100/000000/map-marker.png"
+              />
+            </div>
+            <div class="contact-info">
+              <h1>Alamat</h1>
+              <h2>UNAIR GKB</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Contact Section -->
+
+    <!-- Footer -->
+    <section id="footer">
+      <div class="footer container">
+        <div class="brand">
+          <h1>Kelompok <span>10</span></h1>
+        </div>
+        <h2>Tugas Akhir Algoritma Pemrograman</h2>
+        </div>
+      </div>
+    </section>
+    <!-- End Footer -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
