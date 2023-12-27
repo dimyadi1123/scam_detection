@@ -1,6 +1,4 @@
 import re
-from transformers import BertTokenizer, BertModel
-import torch
 from sklearn.feature_extraction.text import HashingVectorizer
 import numpy as np
 
